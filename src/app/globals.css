@@ -1,0 +1,606 @@
+@import "tailwindcss";
+
+:root {
+  --background: #eef5fc;
+  --foreground: #1e293b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   CLAYMORPHISM DESIGN SYSTEM TOKENS
+   ========================================================================== */
+
+/* Main Floating Navbar Pill */
+.clay-nav-container {
+  background: linear-gradient(180deg, #ffffff 0%, #edf3fb 100%);
+  box-shadow:
+    0 20px 35px -8px rgba(100, 145, 195, 0.22),
+    0 6px 16px -4px rgba(110, 150, 200, 0.12),
+    inset 0 3px 6px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -4px 8px 0 rgba(160, 190, 225, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Floating Dropdown Card */
+.clay-dropdown-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fe 100%);
+  box-shadow:
+    0 24px 48px -12px rgba(85, 130, 185, 0.25),
+    0 8px 20px -6px rgba(100, 145, 200, 0.15),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -5px 10px 0 rgba(160, 192, 226, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Top Speech Bubble Arrow */
+.clay-arrow {
+  position: absolute;
+  top: -7px;
+  left: calc(50% - 7px);
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.95);
+  border-top-left-radius: 3px;
+  transform: rotate(45deg);
+  box-shadow: -2px -2px 4px rgba(100, 145, 195, 0.12);
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Yellow / Gold Clay Button (Start Order) */
+.clay-btn-gold {
+  background: linear-gradient(180deg, #ffe58f 0%, #f9cf5a 100%);
+  box-shadow:
+    0 8px 18px -4px rgba(230, 165, 30, 0.38),
+    inset 0 3px 4px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -3px 6px 0 rgba(190, 125, 15, 0.35);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-btn-gold:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow:
+    0 12px 24px -4px rgba(230, 165, 30, 0.48),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(190, 125, 15, 0.4);
+}
+.clay-btn-gold:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow:
+    0 4px 10px -2px rgba(230, 165, 30, 0.35),
+    inset 0 2px 4px 0 rgba(170, 105, 10, 0.35);
+}
+
+/* Circular Clay User Button */
+.clay-btn-circle {
+  background: linear-gradient(180deg, #ffffff 0%, #e8f1fb 100%);
+  box-shadow:
+    0 6px 14px -3px rgba(100, 145, 195, 0.2),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 5px 0 rgba(150, 185, 220, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-btn-circle:hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow:
+    0 10px 20px -3px rgba(100, 145, 195, 0.28),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 1),
+    inset 0 -3px 5px 0 rgba(150, 185, 220, 0.45);
+}
+.clay-btn-circle:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+/* Clay 3D Icon Tiles */
+.clay-tile-blue {
+  background: linear-gradient(145deg, #e4f1ff 0%, #cbe4fd 100%);
+  box-shadow:
+    0 6px 14px -3px rgba(59, 130, 246, 0.22),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(70, 135, 220, 0.32);
+}
+
+.clay-tile-yellow {
+  background: linear-gradient(145deg, #fff4cc 0%, #fde48b 100%);
+  box-shadow:
+    0 6px 14px -3px rgba(217, 119, 6, 0.22),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(200, 130, 15, 0.3);
+}
+
+.clay-tile-orange {
+  background: linear-gradient(145deg, #ffe8d7 0%, #fdcfb2 100%);
+  box-shadow:
+    0 6px 14px -3px rgba(234, 88, 12, 0.22),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(215, 100, 25, 0.3);
+}
+
+/* Dropdown Item Row Hover */
+.clay-item-row {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.clay-item-row:hover {
+  background: rgba(235, 243, 253, 0.7);
+  transform: translateX(4px);
+}
+.clay-item-row:hover .clay-tile-blue,
+.clay-item-row:hover .clay-tile-yellow,
+.clay-item-row:hover .clay-tile-orange {
+  transform: scale(1.06);
+}
+
+/* ==========================================================================
+   CLAYMORPHISM FOOTER STYLES
+   ========================================================================== */
+
+/* Main Footer Container Card */
+.clay-footer-card {
+  background: linear-gradient(180deg, #ffffff 0%, #edf4fc 100%);
+  box-shadow:
+    0 26px 54px -12px rgba(80, 130, 185, 0.22),
+    0 10px 24px -4px rgba(95, 145, 200, 0.14),
+    inset 0 4px 8px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -6px 12px 0 rgba(155, 190, 226, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Ship Cards Outer Frame */
+.clay-ship-outer {
+  background: linear-gradient(180deg, #e0effd 0%, #cce2f5 100%);
+  box-shadow:
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -3px 6px 0 rgba(130, 170, 215, 0.35),
+    0 6px 16px -4px rgba(100, 140, 190, 0.15);
+}
+
+/* Ship Cards Yellow Inner Card */
+.clay-ship-inner {
+  background: linear-gradient(180deg, #fff3af 0%, #fde484 100%);
+  box-shadow:
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(190, 125, 15, 0.28),
+    0 4px 12px -2px rgba(220, 160, 20, 0.2);
+}
+
+/* Follow Social Clay Pills */
+.clay-pill-instagram {
+  background: linear-gradient(180deg, #ffd3cd 0%, #fcae9f 100%);
+  color: #7f1d1d;
+  box-shadow:
+    0 4px 10px -2px rgba(239, 68, 68, 0.22),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px 0 rgba(185, 28, 28, 0.25);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-pill-instagram:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 14px -2px rgba(239, 68, 68, 0.3),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 4px 0 rgba(185, 28, 28, 0.3);
+}
+
+.clay-pill-tiktok {
+  background: linear-gradient(180deg, #c0f6ec 0%, #99ebd9 100%);
+  color: #064e3b;
+  box-shadow:
+    0 4px 10px -2px rgba(20, 184, 166, 0.22),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px 0 rgba(15, 118, 110, 0.25);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-pill-tiktok:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 14px -2px rgba(20, 184, 166, 0.3),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 4px 0 rgba(15, 118, 110, 0.3);
+}
+
+.clay-pill-twitter {
+  background: linear-gradient(180deg, #dcd9fe 0%, #c4beff 100%);
+  color: #3730a3;
+  box-shadow:
+    0 4px 10px -2px rgba(99, 102, 241, 0.22),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px 0 rgba(67, 56, 202, 0.25);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-pill-twitter:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 14px -2px rgba(99, 102, 241, 0.3),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 4px 0 rgba(67, 56, 202, 0.3);
+}
+
+.clay-pill-youtube {
+  background: linear-gradient(180deg, #ffc9c9 0%, #ff9f9f 100%);
+  color: #991b1b;
+  box-shadow:
+    0 4px 10px -2px rgba(239, 68, 68, 0.24),
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 4px 0 rgba(185, 28, 28, 0.28);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-pill-youtube:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 14px -2px rgba(239, 68, 68, 0.32),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 4px 0 rgba(185, 28, 28, 0.32);
+}
+
+/* Debossed Bottom Bar */
+.clay-debossed-bar {
+  background: #e2edf8;
+  box-shadow:
+    inset 0 3px 6px 0 rgba(135, 170, 205, 0.45),
+    inset 0 -2px 4px 0 rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================================================
+   HERO CLAYMORPHIC STYLES & TOKENS (Exact Match)
+   ========================================================================== */
+
+/* ==========================================================================
+   HERO CLAYMORPHIC STYLES & TOKENS (EXACT MATCH IMAGE 1)
+   ========================================================================== */
+
+/* Top Clay Badge Pill */
+.clay-badge-pill {
+  background: linear-gradient(180deg, #fdfbf7 0%, #ece5dc 100%);
+  box-shadow:
+    0 16px 28px -6px rgba(110, 160, 150, 0.28),
+    0 4px 10px rgba(0, 0, 0, 0.04),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 5px 0 rgba(190, 175, 160, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Chunky Hero Headline matching Image 1 bubbly clay font */
+.hero-chunky-headline {
+  font-family: var(--font-fredoka), system-ui, -apple-system, sans-serif;
+  color: #172b43;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+/* Yellow Clay CTA Button */
+.clay-hero-btn-yellow {
+  background: linear-gradient(180deg, #ffc700 0%, #f6a600 100%);
+  box-shadow:
+    0 18px 30px -4px rgba(220, 145, 10, 0.42),
+    0 6px 14px rgba(200, 130, 10, 0.25),
+    inset 0 3.5px 5px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -4px 6px 0 rgba(170, 95, 5, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-hero-btn-yellow:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 24px 38px -4px rgba(220, 145, 10, 0.52),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -4px 7px 0 rgba(170, 95, 5, 0.5);
+}
+.clay-hero-btn-yellow:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* White Clay Button */
+.clay-hero-btn-white {
+  background: linear-gradient(180deg, #ffffff 0%, #edf4fc 100%);
+  box-shadow:
+    0 18px 30px -4px rgba(100, 150, 175, 0.28),
+    0 6px 14px rgba(100, 150, 175, 0.15),
+    inset 0 3.5px 5px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -4px 6px 0 rgba(160, 185, 215, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-hero-btn-white:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 24px 38px -4px rgba(100, 150, 175, 0.38),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 1),
+    inset 0 -4px 7px 0 rgba(160, 185, 215, 0.45);
+}
+.clay-hero-btn-white:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Obsidian / Midnight 3D Clay Button (High Contrast Pill) */
+.clay-btn-obsidian {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 50%, #0f172a 100%);
+  box-shadow:
+    0 16px 28px -6px rgba(10, 15, 25, 0.45),
+    0 6px 12px -2px rgba(10, 15, 25, 0.25),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -3.5px 5px 0 rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.clay-btn-obsidian:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 22px 36px -6px rgba(10, 15, 25, 0.55),
+    inset 0 3.5px 5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -4px 6px 0 rgba(0, 0, 0, 0.8);
+}
+.clay-btn-obsidian:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow:
+    0 6px 14px -3px rgba(10, 15, 25, 0.4),
+    inset 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Obsidian / Midnight 3D Clay Icon Tile */
+.clay-tile-obsidian {
+  background: linear-gradient(180deg, #334155 0%, #1e293b 55%, #0f172a 100%);
+  box-shadow:
+    0 12px 22px -4px rgba(10, 15, 25, 0.45),
+    inset 0 3px 4px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -3.5px 5px 0 rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Floating Ambient Mini Cards */
+.clay-card-floating {
+  background: linear-gradient(180deg, #ffffff 0%, #e8f3fa 100%);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Service 01 Outer Clay Card (White Frame) */
+.clay-card-outer {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f6fc 100%);
+  box-shadow:
+    0 32px 55px -12px rgba(90, 145, 170, 0.3),
+    0 12px 24px -6px rgba(100, 150, 180, 0.18),
+    inset 0 5px 8px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -6px 12px 0 rgba(160, 195, 220, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Service 02 Outer Clay Card (Solid Soft Yellow/Amber Frame) */
+.clay-card-outer-yellow {
+  background: linear-gradient(180deg, #fff085 0%, #f8d458 100%);
+  box-shadow:
+    0 32px 55px -12px rgba(210, 155, 25, 0.36),
+    0 12px 24px -6px rgba(200, 140, 20, 0.22),
+    inset 0 5px 8px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -6px 12px 0 rgba(190, 120, 10, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Mint Green Inner Plate for Card Restoration */
+.clay-plate-mint {
+  background: linear-gradient(180deg, #b0ebd8 0%, #8de0c8 100%);
+  box-shadow:
+    inset 0 5px 9px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -5px 10px 0 rgba(35, 130, 110, 0.32),
+    0 8px 18px -4px rgba(35, 145, 120, 0.2);
+}
+
+/* White Inner Plate for Pre-Grade Prep */
+.clay-plate-white {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f5fc 100%);
+  box-shadow:
+    inset 0 5px 9px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -5px 10px 0 rgba(150, 185, 215, 0.35),
+    0 8px 18px -4px rgba(110, 150, 190, 0.16);
+}
+
+/* Yellow/Salmon Clay Document in Service 01 */
+.clay-doc-yellow {
+  background: linear-gradient(180deg, #fffae8 0%, #fee488 100%);
+  border: 4px solid #f87171;
+  box-shadow:
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px 0 rgba(195, 130, 20, 0.3),
+    0 12px 24px -4px rgba(0, 0, 0, 0.16);
+}
+
+/* Blue Inset Checkmark Screen */
+.clay-doc-screen {
+  background: linear-gradient(145deg, #74b3f6 0%, #4893ea 100%);
+  box-shadow:
+    inset 0 4px 6px 0 rgba(20, 70, 140, 0.35),
+    inset 0 -3px 4px 0 rgba(255, 255, 255, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 3D Cleaning Brush Handle & Bristles */
+.clay-brush-handle {
+  background: linear-gradient(180deg, #fed766 0%, #e6a71e 100%);
+  box-shadow:
+    inset 0 3px 4px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -3px 4px 0 rgba(170, 100, 10, 0.45);
+}
+.clay-brush-ferrule {
+  background: linear-gradient(90deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+.clay-brush-hair {
+  background: linear-gradient(180deg, #f7ede2 0%, #ddcdbc 100%);
+  box-shadow:
+    inset 0 2px 3px 0 rgba(255, 255, 255, 0.9),
+    0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   LOOP ANIMATIONS & SMOOTH TRANSITIONS (Exact Match)
+   ========================================================================== */
+
+/* 1. Real Working Cleaning Brush Loop Animation */
+@keyframes brushClean {
+  0% {
+    transform: rotate(-35deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(-26deg) translate(-10px, -14px);
+  }
+  50% {
+    transform: rotate(-38deg) translate(-2px, -6px);
+  }
+  75% {
+    transform: rotate(-24deg) translate(-12px, -18px);
+  }
+  100% {
+    transform: rotate(-35deg) translate(0, 0);
+  }
+}
+
+.anim-brush-clean {
+  animation: brushClean 3.6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: 30% 85%;
+}
+
+/* 2. Floating Gentle Bobbing Animation for Cards */
+@keyframes gentleFloat1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+@keyframes gentleFloat2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.6deg);
+  }
+}
+
+.anim-float-card-1 {
+  animation: gentleFloat1 5.5s ease-in-out infinite;
+}
+
+.anim-float-card-2 {
+  animation: gentleFloat2 6.2s ease-in-out infinite 0.6s;
+}
+
+/* 3. Shimmer / Shine across the slabs */
+@keyframes slabShine {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+.anim-sparkle {
+  animation: slabShine 2.4s ease-in-out infinite;
+}
+
+/* 4. Ultra Clean Smooth Button Hover Animations */
+.clay-hero-btn-yellow {
+  background: linear-gradient(180deg, #ffc700 0%, #f6a600 100%);
+  box-shadow:
+    0 16px 28px -4px rgba(220, 145, 10, 0.42),
+    0 4px 10px rgba(200, 130, 10, 0.2),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -4px 6px 0 rgba(170, 95, 5, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+.clay-hero-btn-yellow:hover {
+  transform: translateY(-3px) scale(1.025);
+  box-shadow:
+    0 24px 38px -4px rgba(220, 145, 10, 0.55),
+    0 8px 16px rgba(200, 130, 10, 0.28),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 1),
+    inset 0 -4px 7px 0 rgba(170, 95, 5, 0.5);
+}
+.clay-hero-btn-yellow:active {
+  transform: translateY(1px) scale(0.975);
+  box-shadow:
+    0 8px 16px -2px rgba(220, 145, 10, 0.35),
+    inset 0 2px 4px 0 rgba(170, 95, 5, 0.4);
+}
+
+.clay-hero-btn-white {
+  background: linear-gradient(180deg, #ffffff 0%, #edf4fc 100%);
+  box-shadow:
+    0 16px 28px -4px rgba(100, 150, 175, 0.26),
+    0 4px 10px rgba(100, 150, 175, 0.12),
+    inset 0 3px 5px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -4px 6px 0 rgba(160, 185, 215, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+.clay-hero-btn-white:hover {
+  transform: translateY(-3px) scale(1.025);
+  box-shadow:
+    0 24px 38px -4px rgba(100, 150, 175, 0.35),
+    0 8px 16px rgba(100, 150, 175, 0.18),
+    inset 0 4px 6px 0 rgba(255, 255, 255, 1),
+    inset 0 -4px 7px 0 rgba(160, 185, 215, 0.45);
+}
+.clay-hero-btn-white:active {
+  transform: translateY(1px) scale(0.975);
+  box-shadow:
+    0 8px 16px -2px rgba(100, 150, 175, 0.2),
+    inset 0 2px 4px 0 rgba(160, 185, 215, 0.35);
+}
+
+/* 5. Buttery Smooth Spring Dropdown Menu Entrance */
+.clay-dropdown-animate {
+  animation: clayDropdownIn 0.28s cubic-bezier(0.34, 1.45, 0.64, 1) forwards;
+  transform-origin: top center;
+  will-change: transform, opacity;
+}
+
+@keyframes clayDropdownIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+
+/* Staggered Row Animation inside dropdown */
+.clay-dropdown-card .clay-item-row {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.clay-dropdown-card .clay-item-row:hover {
+  background: rgba(230, 243, 255, 0.8);
+  transform: translateX(4px) scale(1.015);
+}
+
