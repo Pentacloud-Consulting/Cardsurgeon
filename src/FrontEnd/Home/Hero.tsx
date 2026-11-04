@@ -21,9 +21,9 @@ export default function Hero() {
       </div>
 
       {/* =========================================================================
-          HERO FOREGROUND CONTENT - CENTERED & POSITIONED UPWARD (CLEAR OF CARDS)
+          HERO FOREGROUND CONTENT - CENTERED & BALANCED
          ========================================================================= */}
-      <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-center text-center -translate-y-8 sm:-translate-y-12 lg:-translate-y-16">
+      <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-center text-center -translate-y-4 sm:-translate-y-6 lg:-translate-y-8">
         {/* Chunky Clay Headline - Scaled compact & centered */}
         <h1 className="hero-chunky-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-slate-900 drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
           BRING NEW LIFE <br />
