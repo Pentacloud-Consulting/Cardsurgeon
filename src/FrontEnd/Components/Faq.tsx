@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Plus, X, ArrowUpRight } from "lucide-react";
 
 interface FaqItem {
@@ -76,7 +77,7 @@ export default function Faq() {
         {/* =========================================================================
             HEADER ROW: 3D Chunky Heading & Subtitle
            ========================================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
           <div className="flex flex-col items-start">
             <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-black tracking-tight leading-none flex items-center gap-2 flex-wrap">
               <span className="text-[#3b4b61] drop-shadow-sm">Frequently Asked</span>
@@ -86,9 +87,14 @@ export default function Faq() {
             </h2>
           </div>
 
-          <p className="text-sm sm:text-base font-medium text-slate-600 max-w-md leading-relaxed md:text-right">
-            We&apos;re here to help you understand our process, services, and how we care for your valuable cards every step of the way.
-          </p>
+          {/* Top-Right: All Questions Clay Pill Button */}
+          <Link
+            href="/faq"
+            className="self-start sm:self-auto inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-b from-white to-[#f0f4f9] text-[#172b43] font-black text-sm tracking-wide shadow-[0_8px_20px_rgba(80,130,185,0.18),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-3px_5px_rgba(150,180,215,0.3)] border border-white hover:scale-105 active:scale-95 transition-all cursor-pointer"
+          >
+            All Questions
+            <ArrowUpRight className="w-4 h-4 stroke-[2.5] text-[#d89e52]" />
+          </Link>
         </div>
 
         {/* =========================================================================
